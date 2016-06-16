@@ -1,0 +1,6 @@
+#Ignoring project files
+*.win
+*.dll
+*.exe
+*.o
+*.layout
