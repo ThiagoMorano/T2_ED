@@ -19,8 +19,6 @@ int main()
         window.draw(shape);
         window.display();
     }
-    
-// victor hugo
 
     return 0;
 }
