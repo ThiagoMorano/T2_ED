@@ -1,11 +1,12 @@
 #include "snake.h"
 
 snake::snake() {
-	x = 0;
+	x =	0;
 	y = 0;
 	body[0].x = x;
 	body[0].y = y;
-	direction = 0;
+	srand(time(NULL));
+	direction = rand() % 3 + 2;
 	length = 1;
 	
 	bodyPiece = new sf::RectangleShape(sf::Vector2f(5, 5));

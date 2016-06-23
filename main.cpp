@@ -44,7 +44,7 @@ int main()
             fruit.generate();
 
             while(_snake.fruitCollision(fruit))
-            fruit.generate();
+				fruit.generate();
 
             _snake.addBodyPiece();
         }
