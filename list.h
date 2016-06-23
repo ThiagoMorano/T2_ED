@@ -1,18 +1,16 @@
-#include <iostream>
-
-class node {
-	int info;
-	node *next;
-public:
-	node();
-	~node();
-};
+#include "node.h"
+#ifndef LIST_H
+#define LIST_H
 
 class list {
-	node header;
+	node *header_list;
 public:
-	void add(int x);
-	void remove(int x);
+	list();
+	~list();
+	void add_node_list(int x);
+	void remove_node_list(int x);
 	void list_check(int x);
 	void remove_all(int x);
 };
+
+#endif
