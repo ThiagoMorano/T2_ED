@@ -1,6 +1,4 @@
 #include <SFML/Graphics.hpp>
-#include <SFML/Window.hpp>
-#include <SFML/System.hpp>
 
 struct pos
 {
@@ -215,8 +213,7 @@ int main()
     return 0;
 }
 
-
-/* MAIN OLD VERSION
+/*MAIN OLD VERSION
 #include <SFML/Graphics.hpp>
 #include "game_state.h"
 #include "main_game.h"
