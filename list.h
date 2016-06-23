@@ -6,6 +6,11 @@ class node {
 public:
 	node();
 	~node();
+};
+
+class list {
+	node header;
+public:
 	void add(int x);
 	void remove(int x);
 	void list_check(int x);
