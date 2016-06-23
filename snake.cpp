@@ -8,7 +8,8 @@ snake::snake() {
 	direction = 0;
 	length = 1;
 	
-	bodyPiece = new sf::RectangleShape(5, 5);
+	bodyPiece = new sf::RectangleShape(sf::Vector2f(5, 5));
+	bodyPiece->setFillColor(sf::Color::Green);
 }
 
 void snake::move() {
@@ -44,8 +45,12 @@ void snake::move() {
 void snake::setDirection(int dir) { direction = dir; }
 
 void snake::draw(sf::RenderWindow &window) {
-	for(int i=0;i<length;i++)
-		window.draw(sf::Shape::Rectangle(body[i].x*10+1,body[i].y*10+1,body[i].x*10+9,body[i].y*10+9,sf::Color(0,255,0)));
+	for(int i=0;i<length;i++) {
+		bodyPiece->setPosition(body[i].x*10, body[i].y*10);
+		//window.draw(sf::Shape::Rectangle(body[i].x*10+1, body[i].y*10+1, body[i].x*10+9, body[i].y*10+9, sf::Color(0,255,0)));
+		window.draw(*bodyPiece);
+	}
+		
 }
 
 void snake::addBodyPiece() {

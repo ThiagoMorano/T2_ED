@@ -60,12 +60,15 @@ public:
 		case 1:
 			colourToDraw = sf::Color::Red;
 			break;
+		//case Orange:
 		case 2:
 			colourToDraw = sf::Color::Magenta;
 			break;
+		//case Yellow:
 		case 3:
 			colourToDraw = sf::Color::Yellow;
 			break;
+		//case Green:
 		case 4:
 			colourToDraw = sf::Color::Green;
 			//App.Draw(sf::ShapeCircle(x * 10 + 5, y * 10 + 5, 5.0, sf::Color::Green));

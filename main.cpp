@@ -38,8 +38,7 @@ int main()
         
         snake.move();
 
-        if(snake.eatFruit(fruit))
-        {
+        if(snake.eatFruit(fruit)) {
             fruit.generate();
 
             while(snake.fruitCollision(fruit))
