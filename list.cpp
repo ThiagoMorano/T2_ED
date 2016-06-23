@@ -42,7 +42,7 @@ bool list::emptyList(list *p) {
 		return false;
 }
 
-list *list::insertAtFront(list *p, int n) {
+list *list::insertAtFront(list *p, FoodColour n) {
 	node *q;
 	q = newNode(n);
 	q->next = p->front;
@@ -51,7 +51,8 @@ list *list::insertAtFront(list *p, int n) {
 		p->rear = q;
 	return p;
 }
-list *list::insertAfter(list *p, node *w, int n) {
+
+list *list::insertAfter(list *p, node *w, FoodColour n) {
 	node *q;
 	if (w == NULL || p->front == NULL)
 		return insertAtFront(p, n);
@@ -63,12 +64,13 @@ list *list::insertAfter(list *p, node *w, int n) {
 	return p;
 }
 
-list *list::insertAtRear(list *p, int n) {
+list *list::insertAtRear(list *p, FoodColour n) {
 	node *q;
 	q = p->rear;
 	return insertAfter(p, q, n);
 }
-node *list::findInList(list *p, int n) {
+
+node *list::findInList(list *p, FoodColour n) {
 	node *q;
 	q = p->front;
 	while (q != NULL) {
