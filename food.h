@@ -1,4 +1,4 @@
-#include <SFML/Graphics>
+#include <SFML/Graphics.hpp>
 
 #ifndef FOOD_H
 #define FOOD_H
@@ -18,16 +18,16 @@ class Food {
 			
 			switch(colour) {
 				case Blue:
-					texture = sf::LoadSprite("blue_square")
+				//	texture = sf::LoadSprite("blue_square");
 					break;
 				case Yellow:
-					texture = sf::LoadSprite("yellow_square")
+				//	texture = sf::LoadSprite("yellow_square");
 					break;
 				case Red:
-					texture = sf::LoadSprite("red_square")
+				//	texture = sf::LoadSprite("red_square");
 					break;
 				case Green:
-					texture = sf::LoadSprite("green_square")
+				//	texture = sf::LoadSprite("green_square");
 					break;
 		}
 		~Food() {
