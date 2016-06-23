@@ -15,6 +15,10 @@ class snake {
 	private:
 		queue body;
 		float speed;
+		bool enterKey;
+
+		sf::Texture texture;
+    	sf::Sprite head;
 };
 
 #endif

@@ -3,8 +3,6 @@
 void main_game::Initialize(sf::RenderWindow* window) {
 
 	_snake = new snake();
-
-	enterKey = false;
 }
 
 void main_game::Update(sf::RenderWindow* window) {
@@ -16,5 +14,5 @@ void main_game::Render(sf::RenderWindow* window) {
 }
 
 void main_game::Destroy(sf::RenderWindow* window) {
-	_snake->~snake();
+	delete _snake;
 }

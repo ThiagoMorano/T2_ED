@@ -1,11 +1,17 @@
 #include <SFML/Graphics.hpp>
+#include "game_state.h"
+#include "main_game.h"
+
+game_state coreState;
+bool quitGame = false;
 
 int main() {
     // create the window
     sf::RenderWindow window(sf::VideoMode(800, 600), "Snake BCC Edition");
-    sf::Texture texture;
-    texture.loadFromFile("snakes_head.png");
-    sf::Sprite square(texture);
+
+    //Preparing the core state
+    coreState.SetWindow(&window);
+    coreState.SetState(new main_game());
 
     // run the program as long as the window is open
     while (window.isOpen()) {
@@ -20,11 +26,20 @@ int main() {
         // clear the window with black color
         window.clear(sf::Color::Green);
 
-        // draw everything here...
-        window.draw(square);
+        //Update the state
+        coreState.Update();
+        //Render the state
+        coreState.Render();
+
 
         // end the current frame
         window.display();
+
+        //Close the window in case the game ended
+        if(quitGame) {
+            window.close();
+        }
+
     }
 
     return 0;

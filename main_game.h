@@ -17,6 +17,5 @@ private:
 	snake* _snake;
 
 	sf::Font* font;
-	bool enterKey;
 };
 #endif
