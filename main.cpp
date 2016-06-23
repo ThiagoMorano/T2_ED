@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "snake.h"
 #include "list.h"
+#include <Windows.h>
 
 int width = 200;
 int height = 200;
@@ -9,8 +10,8 @@ int main()
 {
     sf::RenderWindow App(sf::VideoMode(width, height),"Snake Picky Eater");
 
-    snake snake;
-    cFruit fruit(0);
+	snake _snake;
+    cFruit fruit(rand()%4);
 
     while(App.isOpen())
     {
@@ -19,43 +20,43 @@ int main()
             if(event.type == sf::Event::Closed)
                 App.close();
 
-            /*if((Event.Type == sf::Event::KeyPressed) && (Event.Key.Code == sf::Key::Escape))
-                App.close();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+				App.close();
 
-            if(App.GetInput().IsKeyDown(sf::Key::Up))
-                snake.setDirection(1);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
+				_snake.setDirection(1);
 
-            if(App.GetInput().IsKeyDown(sf::Key::Down))
-                snake.setDirection(2);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Down))
+				_snake.setDirection(2);
 
-            if(App.GetInput().IsKeyDown(sf::Key::Right))
-                snake.setDirection(3);
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+				_snake.setDirection(3);
 
-            if(App.GetInput().IsKeyDown(sf::Key::Left))
-                snake.setDirection(4);*/
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+				_snake.setDirection(4);
         }
         
         
-        snake.move();
+        _snake.move();
 
-        if(snake.eatFruit(fruit)) {
+        if(_snake.eatFruit(fruit)) {
             fruit.generate();
 
-            while(snake.fruitCollision(fruit))
+            while(_snake.fruitCollision(fruit))
             fruit.generate();
 
-            snake.addBodyPiece();
+            _snake.addBodyPiece();
         }
         
-        if(snake.wallHit() || snake.bodyHit()) {
-        	//Die
+        if(_snake.wallHit() || _snake.bodyHit()) {
+			_snake = snake();
 		}
 
 		App.clear();
-        snake.draw(App);
+        _snake.draw(App);
         fruit.draw(App);
         App.display();
-
+		Sleep(100);
     }
 
     return 0;

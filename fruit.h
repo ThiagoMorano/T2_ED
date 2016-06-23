@@ -48,7 +48,7 @@ private:
 public:
 	//cFruit(FoodColour _colour) {
 	cFruit(int _colour) {
-		circle = new sf::CircleShape(5);
+		circle = new sf::CircleShape(5.0f);
 		colour = _colour;
 
 		switch (colour) {
@@ -79,6 +79,8 @@ public:
 		std::srand((int) time(0));
 		x = (rand() % 20);
 		y = (rand() % 20);
+		
+		circle->setPosition(x, y);
 		
 		//x = sf::Randomizer::Random(0, 19);
 		//y = sf::Randomizer::Random(0, 19);

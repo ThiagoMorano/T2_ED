@@ -1,8 +1,8 @@
 #include "snake.h"
 
 snake::snake() {
-	x = 30;
-	y = 30;
+	x = 0;
+	y = 0;
 	body[0].x = x;
 	body[0].y = y;
 	direction = 0;
@@ -66,9 +66,9 @@ void snake::addBodyPiece() {
 
 bool snake::eatFruit(cFruit &Food) {
 	if(x == Food.xVal() && y == Food.yVal())
-	return true;
+		return true;
 	else
-	return false;
+		return false;
 }
 
 bool snake::wallHit() {
