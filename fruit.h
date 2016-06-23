@@ -77,9 +77,9 @@ public:
 		circle->setFillColor(colourToDraw);
 
 		std::srand((int) time(0));
-		x = (rand() % 20);
-		y = (rand() % 20);
-		
+		x = (rand() % 200);
+		y = (rand() % 200);
+	
 		circle->setPosition(x, y);
 		
 		//x = sf::Randomizer::Random(0, 19);

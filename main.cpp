@@ -9,9 +9,10 @@ int height = 200;
 int main()
 {
     sf::RenderWindow App(sf::VideoMode(width, height),"Snake Picky Eater");
-
+	
+	srand(time(NULL));
 	snake _snake;
-    cFruit fruit(rand()%4);
+    cFruit fruit(rand() % 4);
 
     while(App.isOpen())
     {
