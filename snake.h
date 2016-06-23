@@ -3,21 +3,34 @@
 #ifndef SNAKE_H
 #define SNAKE_H
 
+struct pos {
+	int x;
+	int y;
+};
+
 class snake : public entity {
 	public:
 		snake();
 		~snake();
-	
-		void Update();
-		void Draw(sf::RenderWindow* window);
+
+		void move();
+		void setDirection();
+
+		void draw(sf::RenderWindow &window);
+		void addBodyPiece();
+
+		bool eatFood();
+		bool wallHit();
+		bool bodyHit();
+		bool foodColision();
+		
 	
 	private:
-		queue body;
-		float speed;
-		bool enterKey;
-
-		sf::Texture texture;
-    	sf::Sprite head;
+		pos body[100];
+		int x;
+		int y;
+		int direction;
+		int length;
 };
 
 #endif
