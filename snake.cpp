@@ -10,10 +10,10 @@ snake::snake() {
 }
 
 void snake::move() {
+
 	for(int i=length-1;i != 0;i--)	{
 		body[i].x = body[i-1].x;
        	body[i].y = body[i-1].y;
-
 	}
 
 	switch(direction) {

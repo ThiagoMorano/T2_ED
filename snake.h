@@ -8,7 +8,7 @@ struct pos {
 	int y;
 };
 
-class snake : public entity {
+class snake {
 	public:
 		snake();
 		~snake();
