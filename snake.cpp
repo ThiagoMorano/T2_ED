@@ -1,6 +1,7 @@
 #include "snake.h"
 
 snake::snake() {
+	speed = 10.0f;	
 }
 
 snake::~snake() {

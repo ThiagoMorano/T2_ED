@@ -1,3 +1,5 @@
+#include <SFML/Graphics.h>
+
 #ifndef NODE_H
 #define NODE_H
 
