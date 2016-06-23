@@ -14,22 +14,29 @@ public:
 		q->next = NULL;
 		return q;
 	}
+	node *nextNode(node *p) {
+		return p->next;
+	}
 	void freeNode(node *q) {
 		delete(q);
 	}
 	~node() {}
 };
 
-class list {
+class list : public node {
 	node *front;
 	node *rear;
 public:
 	list();
 	~list();
-	void add_node_list(int x);
-	void remove_node_list(int x);
-	void list_check(int x);
-	void remove_all(int x);
+	list *newlist();
+	list *clearList(list *p);
+	void freeList(list *p);
+	bool emptyList(list *p);
+	list *insertAtFront(list *p, int n);
+	list *insertAfter(list *p, node *w, int n);
+	list *insertAtRear(list *p, int n);
+	node *findInList(list *p, int n);
 };
 
 #endif
