@@ -1,9 +1,9 @@
 #include <SFML/Graphics.hpp>
 
-#ifndef STATE_BASE_H
-#define STATE_BASE_H
+#ifndef GAME_STATE_H
+#define GAME_STATE_H
 
-class state_example {
+class sub_state {
 public:
 	virtual void Initialize(sf::RenderWindow* window) {}
 
@@ -24,7 +24,7 @@ public:
 		this->window = window;
 	}
 
-	void SetState(state_example* state) {
+	void SetState(sub_state* state) {
 		if (this->state != NULL) {
 			this->state->Destroy(this->window);
 		}
@@ -54,7 +54,7 @@ public:
 	}
 private:
 	sf::RenderWindow* window;
-	state_example* state;
+	sub_state* state;
 };
 
 extern game_state coreState;

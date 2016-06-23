@@ -1,11 +1,11 @@
 #include "snake.h"
-#include "state_base.h"
+#include "game_state.h"
 
 
-#ifndef GAME_H
-#define GAME_H
+#ifndef MAIN_GAME_H
+#define MAIN_GAME_H
 
-class main_game : public state_example {
+class main_game : public sub_state {
 
 public:
 	void Initialize(sf::RenderWindow* window);
@@ -14,7 +14,7 @@ public:
 	void Destroy(sf::RenderWindow* window);
 private:
 
-	snake* snake;
+	snake* _snake;
 
 	sf::Font* font;
 	bool enterKey;
