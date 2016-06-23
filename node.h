@@ -2,7 +2,7 @@
 #define NODE_H
 
 class node {
-	sf::color info;
+	int info;
 	node *next;
 public:
 	node();
