@@ -5,8 +5,10 @@ snake::snake() {
 	y = 30;
 	body[0].x = x;
 	body[0].y = y;
-	directon = 0;
+	direction = 0;
 	length = 1;
+	
+	bodyPiece = new sf::RectangleShape(5, 5);
 }
 
 void snake::move() {
@@ -43,7 +45,7 @@ void snake::setDirection(int dir) { direction = dir; }
 
 void snake::draw(sf::RenderWindow &window) {
 	for(int i=0;i<length;i++)
-		window.Draw(sf::Shape::Rectangle(body[i].x*10+1,body[i].y*10+1,body[i].x*10+9,body[i].y*10+9,sf::Color(0,255,0)));
+		window.draw(sf::Shape::Rectangle(body[i].x*10+1,body[i].y*10+1,body[i].x*10+9,body[i].y*10+9,sf::Color(0,255,0)));
 }
 
 void snake::addBodyPiece() {
@@ -57,7 +59,7 @@ void snake::addBodyPiece() {
 	body[0].y = y;
 }
 
-bool snake::eatFood(food &Food) {
+bool snake::eatFruit(cFruit &Food) {
 	if(x == Food.xVal() && y == Food.yVal())
 	return true;
 	else
@@ -79,7 +81,7 @@ bool snake::bodyHit(){
 	return false;
 }
 
-bool snake::foodCollision(food &Food) {
+bool snake::fruitCollision(cFruit &Food) {
 
 	/*
 		VERIFICAR A COR DA COMIDA, E SE NÃO ESTIVER NA LISTA, MORRE
@@ -91,4 +93,4 @@ bool snake::foodCollision(food &Food) {
 	return false;
 }
 
-~snake() {}
+snake::~snake() {}

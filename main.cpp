@@ -1,178 +1,26 @@
 #include <SFML/Graphics.hpp>
+#include "snake.h"
+#include "list.h"
 
-struct pos
-{
-    int x;
-    int y;
-};
-
-class cFruit
-{
-    private:
-        int x;
-        int y;
-
-    public:
-        cFruit()
-        {
-            x = sf::Randomizer::Random(0,19);
-            y = sf::Randomizer::Random(0,19);
-        }
-
-        int xVal()
-        {
-            return x;
-        }
-
-        int yVal()
-        {
-            return y;
-        }
-
-        void draw(sf::RenderWindow & App)
-        {
-            App.Draw(sf::Shape::Circle(x*10+5,y*10+5,5.0,sf::Color(255,0,0)));
-        }
-
-        void generate()
-        {
-                x = sf::Randomizer::Random(0,19);
-                y = sf::Randomizer::Random(0,19);
-        }
-
-        ~cFruit() {}
-};
-
-class cSnake
-{
-    private:
-        pos body[400];
-        int x;
-        int y;
-        int direction;
-        int length;
-
-    public:
-        cSnake()
-        {
-            x = 10;
-            y = 10;
-            body[0].x = x;
-            body[0].y = y;
-            direction = sf::Randomizer::Random(1,4);
-            length = 1;
-        }
-
-        void move()
-        {
-            for(int i=length-1;i != 0;i--)
-            {
-                    body[i].x = body[i-1].x;
-                    body[i].y = body[i-1].y;
-            }
-
-            switch(direction)
-            {
-                case 1:
-                y--;
-                break;
-
-                case 2:
-                y++;
-                break;
-
-                case 3:
-                x++;
-                break;
-
-                case 4:
-                x--;
-                break;
-            }
-
-            body[0].x = x;
-            body[0].y = y;
-
-        }
-
-        void setDirection(int dir)
-        {
-                direction = dir;
-        }
-
-        void draw(sf::RenderWindow & App)
-        {
-            for(int i=0;i<length;i++)
-                App.Draw(sf::Shape::Rectangle(body[i].x*10+1,body[i].y*10+1,body[i].x*10+9,body[i].y*10+9,sf::Color(0,255,0)));
-        }
-
-        void addBodyPiece()
-        {
-            length++;
-            for(int i=length-1;i != 0;i--)
-            {
-                    body[i].x = body[i-1].x;
-                    body[i].y = body[i-1].y;
-            }
-
-            body[0].x = x;
-            body[0].y = y;
-        }
-
-        bool eatFruit(cFruit & fruit)
-        {
-            if(x == fruit.xVal() && y == fruit.yVal())
-                return true;
-            else
-                return false;
-        }
-
-        bool wallHit()
-        {
-            if(y == -1 || y == 20 || x == -1 || x == 20)
-                return true;
-            else
-                return false;
-        }
-
-        bool bodyHit()
-        {
-            for(int i=2;i<length;i++)
-                if(body[i].x == x && body[i].y == y)
-                    return true;
-
-            return false;
-        }
-
-        bool fruitCollision(cFruit & fruit)
-        {
-            for(int i=0;i<length;i++)
-                if(body[i].x == fruit.xVal() && body[i].y == fruit.yVal())
-                    return true;
-
-            return false;
-        }
-
-        ~cSnake() {}
-};
+int width = 200;
+int height = 200;
 
 int main()
 {
-    sf::RenderWindow App(sf::VideoMode(200,200),"Snake");
+    sf::RenderWindow App(sf::VideoMode(width, height),"Snake Picky Eater");
 
-    cSnake snake;
-    cFruit fruit;
+    snake snake;
+    cFruit fruit(0);
 
-    while(App.IsOpened())
+    while(App.isOpen())
     {
-        sf::Event Event;
-        while(App.GetEvent(Event))
-        {
-            if(Event.Type == sf::Event::Closed)
-                App.Close();
+        sf::Event event;
+        while(App.pollEvent(event)) {
+            if(event.type == sf::Event::Closed)
+                App.close();
 
-            if((Event.Type == sf::Event::KeyPressed) && (Event.Key.Code == sf::Key::Escape))
-                App.Close();
+            /*if((Event.Type == sf::Event::KeyPressed) && (Event.Key.Code == sf::Key::Escape))
+                App.close();
 
             if(App.GetInput().IsKeyDown(sf::Key::Up))
                 snake.setDirection(1);
@@ -184,9 +32,10 @@ int main()
                 snake.setDirection(3);
 
             if(App.GetInput().IsKeyDown(sf::Key::Left))
-                snake.setDirection(4);
+                snake.setDirection(4);*/
         }
-
+        
+        
         snake.move();
 
         if(snake.eatFruit(fruit))
@@ -198,16 +47,16 @@ int main()
 
             snake.addBodyPiece();
         }
+        
+        if(snake.wallHit() || snake.bodyHit()) {
+        	//Die
+		}
 
-        if(snake.wallHit() || snake.bodyHit())
-            snake = cSnake();
-
-        App.Clear();
+		App.clear();
         snake.draw(App);
         fruit.draw(App);
-        App.Display();
+        App.display();
 
-        sf::Sleep(0.1);
     }
 
     return 0;

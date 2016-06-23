@@ -1,8 +1,10 @@
 #ifndef FRUIT_H
 #define FRUIT_H
-#include <SFML/Graphics.hpp>
 
-enum FoodColour { Blue, Yellow, Red, Green, Orange };
+#include <SFML/Graphics.hpp>
+#include <ctime>
+
+//enum FoodColour { Blue, Yellow, Red, Green, Orange };
 
 /*class Food {
 private:
@@ -37,11 +39,46 @@ class cFruit {
 private:
 	int x;
 	int y;
+	//FoodColour colour;
+	int colour;
+	sf::Color colourToDraw;
+	
+	sf::CircleShape* circle;
 
 public:
-	cFruit() {
-		x = sf::Randomizer::Random(0, 19);
-		y = sf::Randomizer::Random(0, 19);
+	//cFruit(FoodColour _colour) {
+	cFruit(int _colour) {
+		circle = new sf::CircleShape(5);
+		colour = _colour;
+
+		switch (colour) {
+		//case Blue:
+		case 0:
+			colourToDraw = sf::Color::Blue;
+			break;
+		//case Red:
+		case 1:
+			colourToDraw = sf::Color::Red;
+			break;
+		case 2:
+			colourToDraw = sf::Color::Magenta;
+			break;
+		case 3:
+			colourToDraw = sf::Color::Yellow;
+			break;
+		case 4:
+			colourToDraw = sf::Color::Green;
+			//App.Draw(sf::ShapeCircle(x * 10 + 5, y * 10 + 5, 5.0, sf::Color::Green));
+			break;
+		}
+		circle->setFillColor(colourToDraw);
+
+		std::srand((int) time(0));
+		x = (rand() % 20);
+		y = (rand() % 20);
+		
+		//x = sf::Randomizer::Random(0, 19);
+		//y = sf::Randomizer::Random(0, 19);
 	}
 
 	int xVal() {
@@ -52,26 +89,14 @@ public:
 		return y;
 	}
 
-	void draw(sf::RenderWindow & App) {
-		FoodColour colour;
-		switch (colour) {
-		case Blue:
-			break;
-		case Red:
-			break;
-		case Orange:
-			break;
-		case Yellow:
-			break;
-		case Green:
-			App.Draw(sf::Shape::Circle(x * 10 + 5, y * 10 + 5, 5.0, sf::Color::Green));
-			break;
-		}
+	void draw(sf::RenderWindow & window) {
+		window.draw(*circle);
 	}
 
 	void generate() {
-		x = sf::Randomizer::Random(0, 19);
-		y = sf::Randomizer::Random(0, 19);
+		std::srand((int) time(0));
+		x = (rand() % 20);
+		y = (rand() % 20);
 	}
 
 	~cFruit() {}

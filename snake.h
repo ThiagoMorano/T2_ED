@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "fruit.h"
 
 #ifndef SNAKE_H
 #define SNAKE_H
@@ -14,15 +15,15 @@ class snake {
 		~snake();
 
 		void move();
-		void setDirection();
+		void setDirection(int);
 
 		void draw(sf::RenderWindow &window);
 		void addBodyPiece();
 
-		bool eatFood();
+		bool eatFruit(cFruit&);
 		bool wallHit();
 		bool bodyHit();
-		bool foodColision();
+		bool fruitCollision(cFruit&);
 		
 	
 	private:
@@ -31,6 +32,8 @@ class snake {
 		int y;
 		int direction;
 		int length;
+		
+		sf::RectangleShape* bodyPiece;
 };
 
 #endif
