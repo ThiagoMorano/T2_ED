@@ -8,8 +8,8 @@ class node {
 	//sf::color info;
 	node *next;
 public:
-	node();
-	~node();
+	node() {}
+	~node() {}
 };
 
 #endif
