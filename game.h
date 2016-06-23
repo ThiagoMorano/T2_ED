@@ -5,7 +5,8 @@
 #ifndef GAME_H
 #define GAME_H
 
-class main_game : public state_example {
+class main_game : public tiny_state {
+
 public:
 	void Initialize(sf::RenderWindow* window);
 	void Update(sf::RenderWindow* window);
@@ -13,11 +14,7 @@ public:
 	void Destroy(sf::RenderWindow* window);
 private:
 
-	snake* snake;
-
 	sf::Font* font;
 	bool enterKey;
-
-};
-
+}
 #endif
