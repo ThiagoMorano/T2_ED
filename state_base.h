@@ -1,7 +1,7 @@
 #include <SFML/Graphics.hpp>
 
-#ifndef GAME_STATE_H
-#define GAME_STATE_H
+#ifndef STATE_BASE_H
+#define STATE_BASE_H
 
 class state_example {
 public:
