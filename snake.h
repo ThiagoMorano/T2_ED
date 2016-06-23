@@ -1,10 +1,11 @@
 #include <SFML/Graphics.hpp>
 #include "queue.h"
+#include "entity.h"
 
 #ifndef SNAKE_H
 #define SNAKE_H
 
-class snake {
+class snake : public entity {
 	public:
 		snake();
 		~snake();
