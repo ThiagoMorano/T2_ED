@@ -3,10 +3,10 @@
 #define LIST_H
 
 class node {
-	int info;
-	node *next;
 public:
 	node() {}
+	int info;
+	node *next;
 	node *newNode(int x) {
 		node *q;
 		q = new node();

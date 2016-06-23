@@ -5,7 +5,6 @@ list::list() {
 } 
 
 list::~list() {
-	
 }
 
 list *list::newlist() {
@@ -42,6 +41,7 @@ bool list::emptyList(list *p) {
 	else
 		return false;
 }
+
 list *list::insertAtFront(list *p, int n) {
 	node *q;
 	q = newNode(n);
