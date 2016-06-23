@@ -6,12 +6,23 @@ class node {
 	int info;
 	node *next;
 public:
-	node() {
+	node() {}
+	node *newNode(int x) {
+		node *q;
+		q = new node();
+		q->info = x;
+		q->next = NULL;
+		return q;
+	}
+	void freeNode(node *q) {
+		delete(q);
 	}
 	~node() {}
 };
+
 class list {
-	node *header_list;
+	node *front;
+	node *rear;
 public:
 	list();
 	~list();

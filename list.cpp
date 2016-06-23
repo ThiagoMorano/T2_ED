@@ -2,7 +2,10 @@
 #include <iostream>
 
 list::list() {
-	
+	list *p;
+	p = new list();
+	p->front = NULL;
+	p->rear = NULL;
 } 
 
 list::~list() {
