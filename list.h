@@ -1,7 +1,15 @@
-#include "node.h"
+#include "fruit.h"
 #ifndef LIST_H
 #define LIST_H
 
+class node {
+	int info;
+	node *next;
+public:
+	node() {
+	}
+	~node() {}
+};
 class list {
 	node *header_list;
 public:
