@@ -1,4 +1,5 @@
 #include <SFML/Graphics.hpp>
+#include "queue.h"
 
 #ifndef SNAKE_H
 #define SNAKE_H
@@ -12,7 +13,8 @@ class snake {
 		void Draw(sf::RenderWindow* window);
 	
 	private:
-		
+		queue body;
+		float speed;
 };
 
 #endif
