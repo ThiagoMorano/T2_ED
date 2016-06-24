@@ -6,10 +6,13 @@ snake::snake() {
 	body[0].x = x;
 	body[0].y = y;
 	srand(time(NULL));
-	direction = rand() % 3 + 2;
+	//direction = rand() % 3 + 2;
+	direction = 0;
 	length = 1;
 	
-	bodyPiece = new sf::RectangleShape(sf::Vector2f(5, 5));
+	squareRadius = 20;
+	
+	bodyPiece = new sf::RectangleShape(sf::Vector2f(squareRadius, squareRadius));
 	bodyPiece->setFillColor(sf::Color::Green);
 }
 
@@ -47,7 +50,7 @@ void snake::setDirection(int dir) { direction = dir; }
 
 void snake::draw(sf::RenderWindow &window) {
 	for(int i=0;i<length;i++) {
-		bodyPiece->setPosition(body[i].x*10, body[i].y*10);
+		bodyPiece->setPosition(body[i].x*gridScale, body[i].y*gridScale);
 		//window.draw(sf::Shape::Rectangle(body[i].x*10+1, body[i].y*10+1, body[i].x*10+9, body[i].y*10+9, sf::Color(0,255,0)));
 		window.draw(*bodyPiece);
 	}
@@ -73,16 +76,17 @@ bool snake::eatFruit(cFruit &Food) {
 }
 
 bool snake::wallHit() {
-	if(y == -1 || y == 20 || x == -1 || x == 20)
+	if(y == -1 || y == (height/gridScale) || x == -1 || x == (width - 200)/gridScale)
 		return true;
 	else
 		return false;
 }
 
 bool snake::bodyHit(){
-	for(int i=2;i<length;i++)
-	if(body[i].x == x && body[i].y == y)
-		return true;
+	for(int i=2;i<length;i++) {
+		if(body[i].x == x && body[i].y == y)
+			return true;
+	}
 
 	return false;
 }

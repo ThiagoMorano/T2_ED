@@ -3,8 +3,9 @@
 #include "list.h"
 #include <Windows.h>
 
-int width = 200;
-int height = 200;
+int width = 800;
+int height = 600;
+int gridScale = 20;
 
 int main()
 {
@@ -57,6 +58,7 @@ int main()
         _snake.draw(App);
         fruit.draw(App);
         App.display();
+        
 		Sleep(100);
     }
 

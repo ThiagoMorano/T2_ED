@@ -4,6 +4,10 @@
 #include <SFML/Graphics.hpp>
 #include <ctime>
 
+extern int height;
+extern int width;
+extern int gridScale;
+
 //enum FoodColour { Blue, Yellow, Red, Green, Orange };
 
 /*class Food {
@@ -48,7 +52,7 @@ private:
 public:
 	//cFruit(FoodColour _colour) {
 	cFruit(int _colour) {
-		circle = new sf::CircleShape(5.0f);
+		circle = new sf::CircleShape(10.0f);
 		colour = _colour;
 
 		switch (colour) {
@@ -77,10 +81,14 @@ public:
 		circle->setFillColor(colourToDraw);
 
 		std::srand((int) time(0));
-		x = (rand() % 19);
-		y = (rand() % 19);
-	
-		circle->setPosition(x, y);
+		
+		//x = (rand() % width);
+		x = (rand() % 30);
+		x = x - (x % 10);
+		
+		//y = (rand() % height);
+		y = (rand() % 30);
+		y = y - (y & 10);
 		
 		//x = sf::Randomizer::Random(0, 19);
 		//y = sf::Randomizer::Random(0, 19);
@@ -95,13 +103,16 @@ public:
 	}
 
 	void draw(sf::RenderWindow & window) {
+		circle->setPosition(x*gridScale, y*gridScale);
 		window.draw(*circle);
 	}
 
 	void generate() {
 		std::srand((int) time(0));
-		x = (rand() % 20);
-		y = (rand() % 20);
+		x = (rand() % 30);
+		x = x - (x % 10);
+		y = (rand() % 30);
+		y = y - (y & 10);
 	}
 
 	~cFruit() {}

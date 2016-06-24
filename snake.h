@@ -33,6 +33,8 @@ class snake {
 		int direction;
 		int length;
 		
+		int squareRadius;
+		
 		sf::RectangleShape* bodyPiece;
 };
 
