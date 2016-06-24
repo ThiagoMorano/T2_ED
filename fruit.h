@@ -100,8 +100,8 @@ public:
 
 	void generate() {
 		std::srand((int) time(0));
-		x = (rand() % 20);
-		y = (rand() % 20);
+		x = (rand() % 19);
+		y = (rand() % 19);
 	}
 
 	~cFruit() {}
