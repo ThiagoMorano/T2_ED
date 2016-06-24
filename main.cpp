@@ -36,7 +36,6 @@ int main()
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 				_snake.setDirection(4);
         }
-		//Gustavo
 
         _snake.move();
 
