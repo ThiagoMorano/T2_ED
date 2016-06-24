@@ -15,8 +15,7 @@ int main()
 	snake _snake;
     cFruit fruit(rand() % 4);
 
-    while(App.isOpen())
-    {
+    while(App.isOpen()) {
         sf::Event event;
         while(App.pollEvent(event)) {
             if(event.type == sf::Event::Closed)
@@ -37,8 +36,8 @@ int main()
 			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 				_snake.setDirection(4);
         }
-        
-        
+		//Gustavo
+
         _snake.move();
 
         if(_snake.eatFruit(fruit)) {
