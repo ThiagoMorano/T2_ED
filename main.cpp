@@ -7,8 +7,7 @@ int width = 800;
 int height = 600;
 int gridScale = 20;
 
-int main()
-{
+int main() {
     sf::RenderWindow App(sf::VideoMode(width, height),"Snake Picky Eater");
 	
 	srand(time(NULL));

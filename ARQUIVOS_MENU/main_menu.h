@@ -1,5 +1,5 @@
-#pragma once
-
+#ifndef MAIN_MENU_H
+#define MAIN_MENU_H
 #include "state_manager.h"
 
 class main_menu : public aux_state {
@@ -16,3 +16,4 @@ private:
 	int selected;
 	bool upKey, downKey;
 };
+#endif // !MAIN_MENU_H

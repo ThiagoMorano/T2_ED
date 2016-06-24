@@ -1,15 +1,14 @@
-#include "stdafx.h"
 #include <iostream>
 #include "main_menu.h"
-#include "main_game.h"
+#include "snake.h"
 
 void main_menu::Initialize(sf::RenderWindow* window) {
 	this->selected = 0;
 
 	this->font = new sf::Font();
-	this->font->loadFromFile("font.ttf");
+	this->font->loadFromFile("/T2_ED/font.ttf");
 
-	this->title = new sf::Text("Calouro Inocente", *this->font, 128U);
+	this->title = new sf::Text("Snake", *this->font, 128U);
 	this->title->setOrigin(this->title->getGlobalBounds().width / 2, this->title->getGlobalBounds().height / 2);
 	this->title->setPosition(window->getSize().x / 2, window->getSize().y / 8);
 
