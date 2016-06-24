@@ -115,6 +115,8 @@ public:
 		y = y - (y & 10);
 	}
 
-	~cFruit() {}
+	~cFruit() {
+		//delete(circle);
+	}
 };
 #endif

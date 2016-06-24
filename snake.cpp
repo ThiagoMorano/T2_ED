@@ -103,4 +103,6 @@ bool snake::fruitCollision(cFruit &Food) {
 	return false;
 }
 
-snake::~snake() {}
+snake::~snake() {
+	//delete(bodyPiece);
+}
