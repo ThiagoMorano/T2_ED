@@ -9,7 +9,8 @@ snake::snake() {
 	//direction = rand() % 3 + 2;
 	direction = 0;
 	length = 1;
-	
+	dies = false;
+
 	squareRadius = 20;
 	
 	bodyPiece = new sf::RectangleShape(sf::Vector2f(squareRadius, squareRadius));
@@ -68,11 +69,40 @@ void snake::addBodyPiece() {
 	body[0].y = y;
 }
 
-bool snake::eatFruit(cFruit &Food) {
-	if(x == Food.xVal() && y == Food.yVal())
-		return true;
-	else
-		return false;
+int snake::tryEatFruit() {
+	bool comeu = false;
+	int i = -1;
+	do {
+		i++;
+		if(x == Food[i].xVal() && y == Food[i].yVal())
+			comeu = true;
+	} while (comeu == true || i > 3)
+
+	if(comeu) {
+		if(gM->getInstance().checkColourEaten(i)) { //Case it has eaten a correct fruit
+			if(gM->getInstance().checkListComplete()) {
+				//gM->getInstance().generateAllNew();
+				dies = true;
+			}
+		}
+		else {	//Case a fruit that isn't in the lsit was eaten
+			dies = true;
+			//gM->getInstance()->generateAllNew();
+		}
+	}
+
+	//if(comeu)
+	//if(gM.checkColourEaten())
+	//	if(all fruits were eaten)
+	//		generate new stuff
+	//	else
+	//		keep game;
+	//else
+	//	die
+	//else
+	//return false;
+
+	return comeu;
 }
 
 bool snake::wallHit() {
@@ -92,15 +122,16 @@ bool snake::bodyHit(){
 }
 
 bool snake::fruitCollision(cFruit &Food) {
-
-	/*
-		VERIFICAR A COR DA COMIDA, E SE NÃO ESTIVER NA LISTA, MORRE
-	*/
 	for(int i=0;i<length;i++)
 		if(body[i].x == Food.xVal() && body[i].y == Food.yVal())
 			return true;
 
 	return false;
+}
+
+
+bool snake::getDeath() {
+	return dies;
 }
 
 snake::~snake() {

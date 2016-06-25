@@ -37,6 +37,7 @@ public:
 	list *insertAfter(list *p, node *w, int n);
 	list *insertAtRear(list *p, int n);
 	node *findInList(list *p, int n);
+	bool isInList(int colour);
 };
 
 #endif

@@ -81,3 +81,11 @@ node *list::findInList(list *p, int n) {
 	// retorna NULL se nao encontrar
 	return q;
 }
+
+bool list::isInList(int colour) {
+	if((findInList(this, colour)) != null) {
+		return true;
+	}
+	else
+		return false;
+}

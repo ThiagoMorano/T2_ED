@@ -3,10 +3,12 @@
 
 #include <SFML/Graphics.hpp>
 #include <ctime>
+#include "gameController.h"
 
 extern int height;
 extern int width;
 extern int gridScale;
+extern gameController* gM;
 
 //enum FoodColour { Blue, Yellow, Red, Green, Orange };
 
@@ -51,7 +53,22 @@ private:
 
 public:
 	//cFruit(FoodColour _colour) {
-	cFruit(int _colour) {
+	cFruit() {
+		std::srand((int) time(0));
+		
+		//x = (rand() % width);
+		x = (rand() % 30);
+		x = x - (x % 10);
+		
+		//y = (rand() % height);
+		y = (rand() % 30);
+		y = y - (y & 10);
+		
+		//x = sf::Randomizer::Random(0, 19);
+		//y = sf::Randomizer::Random(0, 19);
+	}
+
+	void setColour(int _colour) {
 		circle = new sf::CircleShape(10.0f);
 		colour = _colour;
 
@@ -79,19 +96,6 @@ public:
 			break;
 		}
 		circle->setFillColor(colourToDraw);
-
-		std::srand((int) time(0));
-		
-		//x = (rand() % width);
-		x = (rand() % 30);
-		x = x - (x % 10);
-		
-		//y = (rand() % height);
-		y = (rand() % 30);
-		y = y - (y & 10);
-		
-		//x = sf::Randomizer::Random(0, 19);
-		//y = sf::Randomizer::Random(0, 19);
 	}
 
 	int xVal() {

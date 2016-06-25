@@ -20,11 +20,11 @@ class snake {
 		void draw(sf::RenderWindow &window);
 		void addBodyPiece();
 
-		bool eatFruit(cFruit&);
+		bool tryEatFruit();
 		bool wallHit();
 		bool bodyHit();
 		bool fruitCollision(cFruit&);
-		
+		bool getDeath();
 	
 	private:
 		pos body[100];
@@ -32,6 +32,7 @@ class snake {
 		int y;
 		int direction;
 		int length;
+		bool dies;
 		
 		int squareRadius;
 		

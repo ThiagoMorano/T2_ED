@@ -6,13 +6,14 @@
 int width = 800;
 int height = 600;
 int gridScale = 20;
+gameController* gM = gameController.getInstance();
 
 int main() {
     sf::RenderWindow App(sf::VideoMode(width, height),"Snake Picky Eater");
 	
 	srand(time(NULL));
 	snake _snake;
-    cFruit fruit(rand() % 4);
+    cFruit fruits[5];
 
     while(App.isOpen()) {
         sf::Event event;
@@ -38,7 +39,12 @@ int main() {
 
         _snake.move();
 
-        if(_snake.eatFruit(fruit)) {
+        if(_snake.tryEatFruit()) { //NEEDS TO REIMPLEMENT THE LOGIC
+            _snake.addBodyPiece();
+        }
+
+       /*if(_snake.tryEatFruit()) { //Verify if a fruit was eaten
+
             fruit.generate();
 
             while(_snake.fruitCollision(fruit))
@@ -46,10 +52,16 @@ int main() {
 
             _snake.addBodyPiece();
         }
-        
+        */
         if(_snake.wallHit() || _snake.bodyHit()) {
 			_snake = snake();
+            gM->generateAllNew();
 		}
+
+        if(_snake.getDeath()) {
+            _snake = snake();
+            gM->generateAllNew();
+        }
 
 		App.clear();
         _snake.draw(App);
