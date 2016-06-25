@@ -8,19 +8,20 @@ class gameController {
 
 
 	//Defining as singleton
-	private static gameController instance = null;
+	private static gameController instance = NULL;
 	public static gameController getInstance() {
-		if(instance == null) {
+		if(instance == NULL) {
 			instance = new ReactionTabel();
 		}
 		return instance;
-	}
+	};
 
 private:
 	list* fruitList;
 
 	gameController() {
 		fruitList = new list();
+		extern cFruit fruits[5];
 
 		fruits[0].setColour(0);
 		fruits[1].setColour(1);
@@ -38,9 +39,18 @@ public:
 	cFruit ingameFruits[5];
 	
 	//Generate new values for the list, and new positions for the fruits
-	void generateAllNew() {
+	void generateAllNew() {//TODO
 		fruitList->clearList(fruitList);
-		
+		int corPraInserir;
+		int i = 0;
+		//fruitList->Insert( random [0,4]
+
+		while(i < 2) {
+			//corPraInserir = rand [0,4]
+			//if(!fruitList->isInList(corPraInserir))
+			//	i++
+			i++
+		}
 	}
 
 	//Check if the fruit eaten was in the list.s

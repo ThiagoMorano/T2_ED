@@ -69,7 +69,7 @@ void snake::addBodyPiece() {
 	body[0].y = y;
 }
 
-int snake::tryEatFruit() {
+bool snake::tryEatFruit() {
 	bool comeu = false;
 	int i = -1;
 	do {
