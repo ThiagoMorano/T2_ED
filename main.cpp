@@ -67,7 +67,7 @@ int main() {
 		App.clear();
         _snake.draw(App); //Draw the snake
         gM->draw(App); //Draw the fruits
-        //gameMask->draw(App);
+        gameMask->draw(App);
         App.display();
         
 		Sleep(100);
