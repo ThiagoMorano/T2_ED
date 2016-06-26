@@ -10,8 +10,9 @@ extern int gridScale;
 
 class cFruit {
 private:
-	int x;
-	int y;
+	int x, vetorx[100];
+	int y, vetory[100];
+	int i = 0;
 	int colour;
 	sf::Color colourToDraw;
 	
@@ -69,10 +70,26 @@ public:
 	}
 
 	void generate() {
-		x = (rand() % 30);
-		x = x - (x % 10);
-		y = (rand() % 30);
-		y = y - (y & 10);
+		int flag = 0, flag2 = 0;
+		while (flag == 0) {
+			x = rand() % 30;
+			x = x - (x % 10);
+			y = (rand() % 30);
+			y = y - (y & 10);
+			for (int j = 0; j <= i; j++) {
+				if (x == vetorx[j] && y == vetory[j]) {
+					flag2 = 1;
+					break;
+				}
+			}
+			if (flag2 != 1)
+				flag = 1;
+			else
+				flag2 = 0;
+		}
+		vetorx[i] = x;
+		vetory[i] = y;
+		i++;
 	}
 
 	void escondeFruta() {
