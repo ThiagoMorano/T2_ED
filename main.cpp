@@ -7,7 +7,8 @@
 int width = 800;
 int height = 600;
 int gridScale = 20;
-gameController* gM = new gameController();
+gameController * gM = new gameController();
+mask* gameMask = new mask();
 
 int main() {
     sf::RenderWindow App(sf::VideoMode(width, height),"Snake Picky Eater");
@@ -66,8 +67,7 @@ int main() {
 		App.clear();
         _snake.draw(App); //Draw the snake
         gM->draw(App); //Draw the fruits
-        //interface.draw(App);
-        //INTERFACE MOSTRA PLACAR E CORES A SEREM COMIDAS
+        //gameMask->draw(App);
         App.display();
         
 		Sleep(100);

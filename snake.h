@@ -1,5 +1,6 @@
 #include <SFML/Graphics.hpp>
 #include "fruit.h"
+#include "interface.h"
 
 #ifndef SNAKE_H
 #define SNAKE_H
@@ -28,7 +29,7 @@ class snake {
 		int getNumComidas();
 	
 	private:
-		pos body[100];
+		pos body[900];
 		int x;
 		int y;
 		int direction;

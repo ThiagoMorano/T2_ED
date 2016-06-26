@@ -8,61 +8,22 @@ extern int height;
 extern int width;
 extern int gridScale;
 
-//enum FoodColour { Blue, Yellow, Red, Green, Orange };
-
-/*class Food {
-private:
-	sf::Texture texture;
-	FoodColour colour;
-
-public:
-	Food (FoodColour _colour) {
-		colour = _colour;
-
-		switch (colour) {
-		case Blue:
-			//	texture = sf::LoadSprite("blue_square");
-			break;
-		case Yellow:
-			//	texture = sf::LoadSprite("yellow_square");
-			break;
-		case Red:
-			//	texture = sf::LoadSprite("red_square");
-			break;
-		case Green:
-			//	texture = sf::LoadSprite("green_square");
-			break;
-		}
-	}
-	~Food () {
-		//DELETE Texture
-	}
-};*/
-
 class cFruit {
 private:
 	int x;
 	int y;
-	//FoodColour colour;
 	int colour;
 	sf::Color colourToDraw;
 	
 	sf::CircleShape* circle;
 
 public:
-	//cFruit(FoodColour _colour) {
 	cFruit() {
-		
-		//x = (rand() % width);
 		x = (rand() % 30);
 		x = x - (x % 10);
 		
-		//y = (rand() % height);
 		y = (rand() % 30);
 		y = y - (y & 10);
-		
-		//x = sf::Randomizer::Random(0, 19);
-		//y = sf::Randomizer::Random(0, 19);
 	}
 
 	void setColour(int _colour) {
@@ -78,7 +39,7 @@ public:
 		case 1:
 			colourToDraw = sf::Color::Red;
 			break;
-		//case Orange:
+		//case Magenta:
 		case 2:
 			colourToDraw = sf::Color::Magenta;
 			break;
@@ -89,7 +50,6 @@ public:
 		//case Green:
 		case 4:
 			colourToDraw = sf::Color::Green;
-			//App.Draw(sf::ShapeCircle(x * 10 + 5, y * 10 + 5, 5.0, sf::Color::Green));
 			break;
 		}
 		circle->setFillColor(colourToDraw);
@@ -108,11 +68,17 @@ public:
 		window.draw(*circle);
 	}
 
-	void generate() {
-		x = (rand() % 30);
-		x = x - (x % 10);
-		y = (rand() % 30);
-		y = y - (y & 10);
+	void generate(cFruit* lista) {
+		do {
+			x = (rand() % 30);
+			x = x - (x % 10);
+			y = (rand() % 30);
+			y = y - (y & 10);
+		} while ((this->x == lista[0].xVal()) && (this->y == lista[0].yVal())  ||
+				((this->x == lista[1].xVal()) && (this->y == lista[1].yVal())) ||
+				((this->x == lista[2].xVal()) && (this->y == lista[2].yVal())) ||
+				((this->x == lista[3].xVal()) && (this->y == lista[3].yVal())) ||
+				((this->x == lista[4].xVal()) && (this->y == lista[4].yVal())));
 	}
 
 	void escondeFruta() {
