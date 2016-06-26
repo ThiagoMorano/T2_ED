@@ -52,7 +52,6 @@ private:
 public:
 	//cFruit(FoodColour _colour) {
 	cFruit() {
-		std::srand((int) time(0));
 		
 		//x = (rand() % width);
 		x = (rand() % 30);
@@ -110,7 +109,6 @@ public:
 	}
 
 	void generate() {
-		std::srand((int) time(0));
 		x = (rand() % 30);
 		x = x - (x % 10);
 		y = (rand() % 30);

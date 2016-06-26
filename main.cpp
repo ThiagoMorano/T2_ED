@@ -1,6 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include "snake.h"
 #include "list.h"
+#include "gameController.h"
 #include <Windows.h>
 
 int width = 800;
@@ -14,6 +15,8 @@ int main() {
 	srand(time(NULL));
 	snake _snake;
     int cor;
+    
+    gM->geraNovasFrutas(_snake);
     //cFruit fruits[5];
 
     while(App.isOpen()) {
@@ -42,7 +45,7 @@ int main() {
 
         if(_snake.tryEatFruit(gM->fruits, cor)) { //Verifica se comeu uma fruta
 
-            if(!gM->checkColourEaten(i)) { //Caso comeu uma fruta incorreta, morre
+            if(!gM->checkColourEaten(cor)) { //Caso comeu uma fruta incorreta, morre
                 _snake = snake();
                 gM->geraNovasFrutas(_snake);
             }
@@ -51,23 +54,18 @@ int main() {
                 if(_snake.getNumComidas() % 3 == 0 ) {
                     gM->geraNovasFrutas(_snake);
                 }
-                gM->fruits[cor]->esconde();
+                gM->fruits[cor].escondeFruta();
             }
         }
 
         if(_snake.wallHit() || _snake.bodyHit()) {
 			_snake = snake();
-            gM->geraNovasFrutas(_snake));
+            gM->geraNovasFrutas(_snake);
 		}
 
-        if(_snake.getDeath()) {
-            _snake = snake();
-            gM->geraNovasFrutas(_snake));
-        }
-
 		App.clear();
-        _snake.draw(App);
-        fruit.draw(App);
+        _snake.draw(App); //Draw the snake
+        gM->draw(App); //Draw the fruits
         //interface.draw(App);
         //INTERFACE MOSTRA PLACAR E CORES A SEREM COMIDAS
         App.display();

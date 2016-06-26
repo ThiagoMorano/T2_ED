@@ -21,7 +21,7 @@ class snake {
 		void draw(sf::RenderWindow &window);
 		void addBodyPiece();
 
-		bool tryEatFruit();
+		bool tryEatFruit(cFruit*, int&);
 		bool wallHit();
 		bool bodyHit();
 		bool fruitCollision(cFruit&);

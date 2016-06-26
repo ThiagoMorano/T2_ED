@@ -5,7 +5,6 @@ snake::snake() {
 	y = 0;
 	body[0].x = x;
 	body[0].y = y;
-	srand(time(NULL));
 	//direction = rand() % 3 + 2;
 	direction = 0;
 	length = 1;
@@ -79,7 +78,7 @@ bool snake::tryEatFruit(cFruit* frutas, int& cor) {
 			comeu = true;
 			cor = i;
 		}
-	} while (comeu == false && i < 4)
+	} while (comeu == false && i < 4);
 
 	return comeu;
 }

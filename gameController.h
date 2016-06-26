@@ -22,7 +22,7 @@ public:
 		fruits[3].setColour(3);
 		fruits[4].setColour(4);
 
-		this->geraNovasFrutas();
+		//this->geraNovasFrutas();
 	}
 
 	//Adiciona novas cores a lista
@@ -31,7 +31,6 @@ public:
 		int corPraInserir;
 		int i = 0;
 
-		std::srand((int) time(0));
 		fruitList->insertAtFront(fruitList, rand() % 4);
 
 		while(i < 2) { //Populando lista com novas cores
@@ -43,12 +42,10 @@ public:
 		}
 
 		for(int i = 0; i < 5; i++) { //
-			fruits[i]->generate();
+			fruits[i].generate();
             while(_snake.fruitCollision(fruits[i]))
-				fruits[i]->generate();
+				fruits[i].generate();
 		}
-
-
 	}
 
 	//Check if the fruit eaten was in the list.s
@@ -66,6 +63,15 @@ public:
 	bool checkListComplete() {
 
 	}
+	
+	void draw(sf::RenderWindow &window) {
+		for(int i = 0; i < 5; i++) {
+			fruits[i].draw(window);
+		}
+	}
+		
 };
+
+extern gameController* gM;
 
 #endif
