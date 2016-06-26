@@ -6,14 +6,14 @@
 int width = 800;
 int height = 600;
 int gridScale = 20;
-gameController* gM = gameController.getInstance();
-cFruit fruits[5];
+gameController* gM = new gameController();
 
 int main() {
     sf::RenderWindow App(sf::VideoMode(width, height),"Snake Picky Eater");
 	
 	srand(time(NULL));
 	snake _snake;
+    int cor;
     //cFruit fruits[5];
 
     while(App.isOpen()) {
@@ -40,34 +40,29 @@ int main() {
 
         _snake.move();
 
-        if(_snake.tryEatFruit()) {
-            if(_snake.getDeath()) {
+        if(_snake.tryEatFruit(gM->fruits, cor)) { //Verifica se comeu uma fruta
+
+            if(!gM->checkColourEaten(i)) { //Caso comeu uma fruta incorreta, morre
                 _snake = snake();
-                gM->generateAllNew();
+                gM->geraNovasFrutas(_snake);
             }
-            else {
+            else {  //Caso comeu uma fruta certa
                 _snake.addBodyPiece();
+                if(_snake.getNumComidas() % 3 == 0 ) {
+                    gM->geraNovasFrutas(_snake);
+                }
+                gM->fruits[cor]->esconde();
             }
         }
 
-       /*if(_snake.tryEatFruit()) { //Verify if a fruit was eaten
-
-            fruit.generate();
-
-            while(_snake.fruitCollision(fruit))
-				fruit.generate();
-
-            _snake.addBodyPiece();
-        }
-        */
         if(_snake.wallHit() || _snake.bodyHit()) {
 			_snake = snake();
-            gM->generateAllNew();
+            gM->geraNovasFrutas(_snake));
 		}
 
         if(_snake.getDeath()) {
             _snake = snake();
-            gM->generateAllNew();
+            gM->geraNovasFrutas(_snake));
         }
 
 		App.clear();

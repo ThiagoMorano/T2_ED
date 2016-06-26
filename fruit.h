@@ -3,12 +3,10 @@
 
 #include <SFML/Graphics.hpp>
 #include <ctime>
-#include "gameController.h"
 
 extern int height;
 extern int width;
 extern int gridScale;
-extern gameController* gM;
 
 //enum FoodColour { Blue, Yellow, Red, Green, Orange };
 
@@ -117,6 +115,11 @@ public:
 		x = x - (x % 10);
 		y = (rand() % 30);
 		y = y - (y & 10);
+	}
+
+	void escondeFruta() {
+		x = -30;
+		y = -30;
 	}
 
 	~cFruit() {

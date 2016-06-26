@@ -10,6 +10,7 @@ snake::snake() {
 	direction = 0;
 	length = 1;
 	dies = false;
+	contadorComida = 0;
 
 	squareRadius = 20;
 	
@@ -69,38 +70,16 @@ void snake::addBodyPiece() {
 	body[0].y = y;
 }
 
-bool snake::tryEatFruit() {
+bool snake::tryEatFruit(cFruit* frutas, int& cor) {
 	bool comeu = false;
 	int i = -1;
 	do {
 		i++;
-		if(x == Food[i].xVal() && y == Food[i].yVal())
+		if(x == frutas[i].xVal() && y == frutas[i].yVal()) {
 			comeu = true;
-	} while (comeu == true || i > 3)
-
-	if(comeu) {
-		if(gM->getInstance().checkColourEaten(i)) { //Case it has eaten a correct fruit
-			if(gM->getInstance().checkListComplete()) {
-				//gM->getInstance().generateAllNew();
-				dies = true;
-			}
+			cor = i;
 		}
-		else {	//Case a fruit that isn't in the lsit was eaten
-			dies = true;
-			//gM->getInstance()->generateAllNew();
-		}
-	}
-
-	//if(comeu)
-	//if(gM.checkColourEaten())
-	//	if(all fruits were eaten)
-	//		generate new stuff
-	//	else
-	//		keep game;
-	//else
-	//	die
-	//else
-	//return false;
+	} while (comeu == false && i < 4)
 
 	return comeu;
 }
@@ -130,8 +109,8 @@ bool snake::fruitCollision(cFruit &Food) {
 }
 
 
-bool snake::getDeath() {
-	return dies;
+int snake::getNumComidas() {
+	return (length - 1);
 }
 
 snake::~snake() {

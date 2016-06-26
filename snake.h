@@ -13,6 +13,7 @@ class snake {
 	public:
 		snake();
 		~snake();
+		int contadorComida;
 
 		void move();
 		void setDirection(int);
@@ -24,7 +25,7 @@ class snake {
 		bool wallHit();
 		bool bodyHit();
 		bool fruitCollision(cFruit&);
-		bool getDeath();
+		int getNumComidas();
 	
 	private:
 		pos body[100];

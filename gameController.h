@@ -6,22 +6,15 @@
 
 class gameController {
 
-
-	//Defining as singleton
-	private static gameController instance = NULL;
-	public static gameController getInstance() {
-		if(instance == NULL) {
-			instance = new ReactionTabel();
-		}
-		return instance;
-	};
-
 private:
 	list* fruitList;
 
+public:
+	cFruit fruits[5];
+
+
 	gameController() {
 		fruitList = new list();
-		extern cFruit fruits[5];
 
 		fruits[0].setColour(0);
 		fruits[1].setColour(1);
@@ -29,28 +22,33 @@ private:
 		fruits[3].setColour(3);
 		fruits[4].setColour(4);
 
-		//Call method to add random colors to the list
-		this->generateAllNew();
+		this->geraNovasFrutas();
 	}
 
-
-public:
-
-	cFruit ingameFruits[5];
-	
-	//Generate new values for the list, and new positions for the fruits
-	void generateAllNew() {//TODO
+	//Adiciona novas cores a lista
+	void geraNovasFrutas(snake _snake) {//TODO
 		fruitList->clearList(fruitList);
 		int corPraInserir;
 		int i = 0;
-		//fruitList->Insert( random [0,4]
 
-		while(i < 2) {
-			//corPraInserir = rand [0,4]
-			//if(!fruitList->isInList(corPraInserir))
-			//	i++
-			i++
+		std::srand((int) time(0));
+		fruitList->insertAtFront(fruitList, rand() % 4);
+
+		while(i < 2) { //Populando lista com novas cores
+			corPraInserir = rand() % 4;
+			if(!fruitList->isInList(corPraInserir)) {
+				fruitList->insertAtRear(fruitList, corPraInserir);
+				i++;
+			}
 		}
+
+		for(int i = 0; i < 5; i++) { //
+			fruits[i]->generate();
+            while(_snake.fruitCollision(fruits[i]))
+				fruits[i]->generate();
+		}
+
+
 	}
 
 	//Check if the fruit eaten was in the list.s
@@ -68,9 +66,6 @@ public:
 	bool checkListComplete() {
 
 	}
-
 };
-
-
 
 #endif
