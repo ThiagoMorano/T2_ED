@@ -45,9 +45,9 @@ public:
 		}
 
 		for(int i = 0; i < 5; i++) { //Checa se nenhuma fruta está sobre a cobra
-			fruits[i].generate(fruits);
+			fruits[i].generate();
 				while(_snake.fruitCollision(fruits[i]))
-					fruits[i].generate(fruits);
+					fruits[i].generate();
 		}
 	}
 

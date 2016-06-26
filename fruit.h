@@ -68,17 +68,11 @@ public:
 		window.draw(*circle);
 	}
 
-	void generate(cFruit* lista) {
-		do {
-			x = (rand() % 30);
-			x = x - (x % 10);
-			y = (rand() % 30);
-			y = y - (y & 10);
-		} while ((this->x == lista[0].xVal()) && (this->y == lista[0].yVal())  ||
-				((this->x == lista[1].xVal()) && (this->y == lista[1].yVal())) ||
-				((this->x == lista[2].xVal()) && (this->y == lista[2].yVal())) ||
-				((this->x == lista[3].xVal()) && (this->y == lista[3].yVal())) ||
-				((this->x == lista[4].xVal()) && (this->y == lista[4].yVal())));
+	void generate() {
+		x = (rand() % 30);
+		x = x - (x % 10);
+		y = (rand() % 30);
+		y = y - (y & 10);
 	}
 
 	void escondeFruta() {
