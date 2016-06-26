@@ -13,7 +13,7 @@ mask* gameMask = new mask();
 int main() {
     sf::RenderWindow App(sf::VideoMode(width, height),"Snake Picky Eater");
 	
-	srand(time(NULL));
+	srand(time(NULL));	
 	snake _snake;
     int cor;
     
