@@ -67,6 +67,8 @@ void snake::addBodyPiece() {
 
 	body[0].x = x;
 	body[0].y = y;
+	
+	gameMask->setScore(length - 1);
 }
 
 bool snake::tryEatFruit(cFruit* frutas, int& cor) {
