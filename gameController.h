@@ -31,7 +31,7 @@ public:
 		int corPraInserir;
 		int i = 0;
 
-		corPraInserir =  rand() % 4;
+		corPraInserir = rand() % 4;
 		fruitList->insertAtFront(fruitList, corPraInserir);
 		gameMask->setCor(i, corPraInserir);
 
