@@ -51,10 +51,10 @@ int main() {
             }
             else {  //Caso comeu uma fruta certa
                 _snake.addBodyPiece();
+                gM->fruits[cor].escondeFruta();
                 if(_snake.getNumComidas() % 3 == 0 ) {
                     gM->geraNovasFrutas(_snake);
                 }
-                gM->fruits[cor].escondeFruta();
             }
         }
 
