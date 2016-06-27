@@ -12,6 +12,7 @@ class cFruit {
 private:
 	int x;
 	int y;
+	int i = 0;
 	int colour;
 	sf::Color colourToDraw;
 	
@@ -19,11 +20,31 @@ private:
 
 public:
 	cFruit() {
-		x = (rand() % 30);
+		int flag = 0, flag2 = 0;
+		while (flag != 1) {
+			x = rand() % 30;
+			x = x - (x % 10);
+			y = (rand() % 30);
+			y = y - (y % 10);
+			for (int j = 0; j <= i; j++) {
+				if (x == vetorx[j] && y == vetory[j])
+					flag2 = 1;
+			}
+			if (flag2 == 0) {
+				flag = 1;
+				vetorx[i] = x;
+				vetory[i] = y;
+				i++;
+			}
+			else {
+				flag2 = 0;
+			}
+		}
+		/*x = (rand() % 30);
 		x = x - (x % 10);
 		
 		y = (rand() % 30);
-		y = y - (y & 10);
+		y = y - (y % 10);*/
 	}
 
 	void setColour(int _colour) {
