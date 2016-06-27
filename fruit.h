@@ -68,8 +68,9 @@ public:
 		window.draw(*circle);
 	}
 
+	//Gera valores de posicao para a fruta
 	void generate(cFruit* lista) {
-		do {
+		do {	//Nao permite que duas frutas ocupem a mesma posicao
 			x = (rand() % 30);
 			y = (rand() % 30);
 		} while (!((this->x == lista[0].xVal()) && (this->y == lista[0].yVal()) ||
@@ -85,7 +86,6 @@ public:
 	}
 
 	~cFruit() {
-		//delete(circle);
 	}
 };
 #endif

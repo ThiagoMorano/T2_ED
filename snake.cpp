@@ -115,5 +115,4 @@ int snake::getNumComidas() {
 }
 
 snake::~snake() {
-	//delete(bodyPiece);
 }

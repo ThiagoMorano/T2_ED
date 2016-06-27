@@ -138,15 +138,12 @@ public:
 		case 1:  //case Red:
 			auxCor = sf::Color::Red;
 			break;
-		//case Magenta:
 		case 2:
 			auxCor = sf::Color::Magenta;
 			break;
-		//case Yellow:
 		case 3:
 			auxCor = sf::Color::Yellow;
 			break;
-		//case Green:
 		case 4:
 			auxCor = sf::Color::Green;
 			break;
@@ -155,10 +152,6 @@ public:
 	}
 
 	void draw(sf::RenderWindow &window) {
-		//DRAW CONTORNO
-		//DRAW REGRAS
-		//DRAW FRUTAS
-		//DRAW SCORE
 		window.draw(*bordaMask);
 		
 		window.draw(*bordaFrutas);

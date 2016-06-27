@@ -44,14 +44,14 @@ public:
 			}
 		}
 
-		for(int i = 0; i < 5; i++) { //Checa se nenhuma fruta está sobre a cobra
+		for(int i = 0; i < 5; i++) { //Checa se nenhuma fruta esta sobre a cobra
 			fruits[i].generate(fruits);
 				while(_snake.fruitCollision(fruits[i]))
 					fruits[i].generate(fruits);
 		}
 	}
 
-	//Check if the fruit eaten was in the list.s
+	//Check if the fruit eaten was in the list.
 	bool checkColourEaten(int colour) {
 		if(this->fruitList->isInList(colour)) {
 			return true;
