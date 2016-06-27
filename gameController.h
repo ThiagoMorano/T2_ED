@@ -31,12 +31,12 @@ public:
 		int corPraInserir;
 		int i = 0;
 
-		corPraInserir = rand() % 4;
+		corPraInserir = rand() % 5;
 		fruitList->insertAtFront(fruitList, corPraInserir);
 		gameMask->setCor(i, corPraInserir);
 
 		while(i < 2) { //Populando lista com novas cores
-			corPraInserir = rand() % 4;
+			corPraInserir = rand() % 5;
 			if(!fruitList->isInList(corPraInserir)) {
 				fruitList->insertAtRear(fruitList, corPraInserir);
 				i++;

@@ -70,11 +70,11 @@ public:
 		do {	//Nao permite que duas frutas ocupem a mesma posicao
 			x = (rand() % 30);
 			y = (rand() % 30);
-		} while (!((this->x == lista[0].xVal()) && (this->y == lista[0].yVal()) ||
-				((this->x == lista[1].xVal()) && (this->y == lista[1].yVal()))  ||
-				((this->x == lista[2].xVal()) && (this->y == lista[2].yVal()))  ||
-				((this->x == lista[3].xVal()) && (this->y == lista[3].yVal()))  ||
-				((this->x == lista[4].xVal()) && (this->y == lista[4].yVal()))));
+		} while(!(((this->x == lista[0].xVal()) && (this->y == lista[0].yVal()))  ||
+				  ((this->x == lista[1].xVal()) && (this->y == lista[1].yVal()))  ||
+				  ((this->x == lista[2].xVal()) && (this->y == lista[2].yVal()))  ||
+				  ((this->x == lista[3].xVal()) && (this->y == lista[3].yVal()))  ||
+				  ((this->x == lista[4].xVal()) && (this->y == lista[4].yVal()))));
 	}
 
 	void escondeFruta() {
