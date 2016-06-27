@@ -56,7 +56,7 @@ public:
 		font->loadFromFile("font.ttf");
 		
 
-		maskX = 600;
+		maskX = 606;
 		maskHeight = 600;
 		maskThickness = 6;
 
